@@ -1,0 +1,61 @@
+{
+  "name": "jn5189-programmer",
+  "version": "0.0.0",
+  "main": "http://localhost:8964",
+  "node-remote": "http://localhost:8964",
+  "chromium-args": "--disable-raf-throttling",
+  "window": {
+    "width": 400,
+    "height": 850,
+    "min_width": 300,
+    "min_height": 300,
+    "icon": "assets/icon.png"
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "concurrently \"ng serve --port=8964 --verbose\" \"nw .\"",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.2.0",
+    "@angular/cdk": "^14.2.7",
+    "@angular/common": "^14.2.0",
+    "@angular/compiler": "^14.2.0",
+    "@angular/core": "^14.2.0",
+    "@angular/forms": "^14.2.0",
+    "@angular/material": "^14.2.7",
+    "@angular/platform-browser": "^14.2.0",
+    "@angular/platform-browser-dynamic": "^14.2.0",
+    "@angular/router": "^14.2.0",
+    "@types/chrome": "^0.0.212",
+    "angular-progress-bar": "^1.0.11",
+    "chrome-apps-serialport": "^1.0.9",
+    "crc-32": "^1.2.2",
+    "file-dialog": "^0.0.8",
+    "material-icons": "^1.12.1",
+    "nwjs-j5-fix": "^1.0.6",
+    "primeicons": "^6.0.1",
+    "primeng": "^14.2.1",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.6",
+    "@angular/cli": "~14.2.6",
+    "@angular/compiler-cli": "^14.2.0",
+    "@types/jasmine": "~4.0.0",
+    "concurrently": "^7.5.0",
+    "jasmine-core": "~4.3.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.0.0",
+    "nw": "^0.70.1-sdk",
+    "typescript": "~4.7.2"
+  }
+}

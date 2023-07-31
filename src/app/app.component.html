@@ -1,0 +1,89 @@
+<div class="main-container" id="container">
+    <div id="portInfo" class="app-card">
+        <div class="right-center app-card-toolbar">
+            <div class="left-center app-card-title">ports</div>
+            <div id="portSel">
+                <mat-select (selectionChange)="serial.portSelChange($event)"
+                            [(value)]="serial.selPort">
+                    <mat-option *ngFor="let port of serial.comPorts" [value]="port">
+                        {{port.path}}
+                    </mat-option>
+                </mat-select>
+            </div>
+            <button mat-button (click)="serial.listAllPorts()" [disabled]="serial.listStatus()">
+                <mat-icon>autorenew</mat-icon>
+                list
+            </button>
+        </div>
+        <div class="info-msg left-center">
+            name: {{ serial.selPort.displayName ? serial.selPort.displayName : '- - -'}}
+        </div>
+        <div class="info-msg left-center">
+            pID: {{ '0x' + serial.selPort.productId.toString(16).padStart(4, '0').toUpperCase()}}
+        </div>
+        <div class="info-msg left-center">
+            vID: {{ '0x' + serial.selPort.vendorId.toString(16).padStart(4, '0').toUpperCase()}}
+        </div>
+    </div>
+    <div id="devInfo" class="app-card">
+        <div class="right-center app-card-toolbar">
+            <div class="left-center app-card-title">JN5189</div>
+            <button mat-button (click)="serial.enterISP()" [disabled]="serial.unlockStatus()">
+                <mat-icon>lock_open</mat-icon>
+                ISP Unlock
+            </button>
+        </div>
+        <div class="info-msg left-center">
+            chip ID: {{ serial.chipID}}
+        </div>
+        <div class="info-msg left-center">
+            version: {{ serial.version}}
+        </div>
+        <div class="info-msg left-center">
+            flash size: {{ serial.getFlashSize()}}
+        </div>
+        <div class="info-msg left-center">
+            sector size: {{ serial.getSectorSize()}}
+        </div>
+    </div>
+    <div id="binInfo" class="app-card">
+        <div class="right-center app-card-toolbar">
+            <div class="left-center app-card-title">bin-file</div>
+            <button mat-button (click)="selBinFile()" [disabled]="serial.wrFlashFlag">
+                <mat-icon>file_download</mat-icon>
+                Read
+            </button>
+            <button mat-button (click)="serial.writeFlash()" [disabled]="serial.getFlashWrStatus()">
+                <mat-icon>file_upload</mat-icon>
+                Write
+            </button>
+        </div>
+        <div class="info-msg left-center">
+            <span style="color: red">{{ binPath }}</span> ({{serial.binProgress.toFixed(0)}} %)
+        </div>
+        <div id="progress-bar">
+            <mat-progress-bar mode="determinate" [value]="serial.binProgress">
+            </mat-progress-bar>
+        </div>
+    </div>
+    <div id="logs" class="app-card">
+        <div class="right-center app-card-toolbar">
+            <div class="left-center app-card-title">logs</div>
+            <button mat-button (click)="clearLogs()">
+                <mat-icon>delete_forever</mat-icon>
+                Clear
+            </button>
+            <mat-checkbox id="cbScroll"
+                          [ngModel]="scrollFlag"
+                          (ngModelChange)="autoScrollChange($event)"
+                          color="primary">
+                autoscroll
+            </mat-checkbox>
+        </div>
+        <div id="logList">
+            <div *ngFor="let msg of logs" class="log-msg left-center" [style.color]="msg.color">
+                {{ msg.text }}
+            </div>
+        </div>
+    </div>
+</div>

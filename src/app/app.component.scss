@@ -1,0 +1,66 @@
+.main-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  //align-items: stretch;
+  //border: solid 1px red;
+  padding: 5px;
+  //overflow: auto;
+  gap: 5px;
+}
+/*
+.app-card:last-of-type {
+    flex: 1 1 100%;
+    border: solid 1px red;
+}
+*/
+#logs{
+  min-height: 250px;
+  flex: 1 1 auto;
+  overflow: auto;
+  //margin-bottom: 5px;
+  //border-radius: 5px;
+}
+#cbScroll{
+  padding-right: 10px;
+}
+#logList {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+}
+.log-msg{
+  padding-left: 20px;
+  min-height: 20px;
+  font-size: 0.8em;
+  white-space: nowrap;
+  border-bottom: solid 1px #ededed;
+}
+#devInfo{
+  font-size: 0.9em;
+  border : solid 1px black;
+  border-radius: 5px;
+}
+
+.info-msg{
+    padding-left: 20px;
+    min-height: 26px;
+    white-space: pre;
+    border-bottom: solid 1px #ededed;
+}
+.info-msg:last-of-type {
+    border-bottom: unset;
+}
+
+#progress-bar {
+    padding: 10px;
+}
+
+#portSel{
+    flex: 1 1 auto;
+    padding: 5px;
+    padding-left: 10px;
+    border: 1px solid rgb(3, 179, 223);
+    border-radius: 6px;
+}

@@ -1,0 +1,73 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/_theming';
+@import 'material-icons/iconfont/material-icons.css';
+
+@font-face {
+    font-family: appFont;
+    src: url("assets/fonts/VarelaRound-Regular.ttf");
+    //font-style: normal;
+    //font-weight: normal;
+  }
+
+  * {
+    font-family: appFont;
+  }
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  //font-family: Roboto,"Helvetica Neue", sans-serif;
+}
+
+.center-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.left-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.right-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.app-card {
+  display: flex;
+  flex-direction: column;
+  border: solid black 1px;
+  border-radius: 8px;
+}
+.app-card-toolbar {
+  gap: 10px;
+  font-size: 0.9em;
+  border-bottom : solid 1px black;
+  //margin-top: 10px;
+}
+.app-card-title {
+  flex: 1 1 auto;
+  align-self: stretch;
+  //font-family: Verdana;
+  //font-size: 1.4em;
+  font-size: 140%;
+  padding-left: 10px;
+}
+
+.mat-button {
+    font-family: appFont;
+    font-size: 16px;
+}
+
+.mat-checkbox {
+    font-family: appFont;
+    font-size: 16px;
+}
