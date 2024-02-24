@@ -311,6 +311,14 @@ export class SerialService {
                                 this.ispState = eState.IDLE_STATE;
                                 this.binProgress = 0;
                                 this.utils.sendMsg('wr flash done', GREEN);
+                                // dtr and rts are active low signals => true->low level
+                                chrome.serial.setControlSignals(this.connID, { dtr: false, rts: true }, (result: boolean)=>{
+                                    setTimeout(()=>{
+                                        chrome.serial.setControlSignals(this.connID, { rts: false }, (result: boolean)=>{
+                                            // --
+                                        });
+                                    }, 50);
+                                });
                             }
                         }
                         else {
@@ -406,6 +414,10 @@ export class SerialService {
             this.connID = connInfo.connectionId;
             this.comPorts.push(this.allPorts[this.portIdx]);
             this.utils.sendMsg(`valid: ${this.portPath}`, BLUE);
+            // dtr and rts are active low signals => true->low level
+            chrome.serial.setControlSignals(this.connID, { dtr: false, rts: false }, (result: boolean)=>{
+                // ---
+            });
         }
         else {
             const err = chrome.runtime.lastError.message;
@@ -602,6 +614,7 @@ export class SerialService {
                 });
             }, 50);
         });
+
     }
 
     /***********************************************************************************************
@@ -986,6 +999,9 @@ export class SerialService {
                 this.portOpenFlag = true;
                 this.validPortFlag = true;
                 this.utils.sendMsg(`open: ${this.portPath}`, BLUE);
+                chrome.serial.setControlSignals(this.connID, { dtr: false, rts: false }, (result: boolean)=>{
+                    // ---
+                });
             }
             else {
                 setTimeout(() => {
